@@ -17,6 +17,13 @@ import EngineeringDashboards from "@/components/EngineeringDashboards";
 import CommercialDemoModal from "@/components/CommercialDemoModal";
 import PatioDemoModal from "@/components/PatioDemoModal";
 
+const INTEGRANTES = [
+  { nombre: "Toribio Blas, Kenyu Scott", codigo: "U24231999" },
+  { nombre: "Cavero Quiñónez, Piero Sneyder", codigo: "U24237440" },
+  { nombre: "Rodríguez Sifuentes, Luis Alexander", codigo: "U24315576" },
+  { nombre: "Yarlaqué Vallejos, Smiler Alexis", codigo: "U21300084" },
+];
+
 function playSwitchSound(toBe: boolean) {
   try {
     const ctx = new (window.AudioContext ||
@@ -109,7 +116,7 @@ export default function AtPacPresentation() {
                 AT-PAC PERÚ S.A.C. — Ingeniería de Procesos
               </h1>
               <span className="hidden sm:inline-block text-[10px] font-mono px-2 py-0.5 rounded bg-slate-800 text-slate-300">
-                GRUPO UMDASCH • UTP SECC. 19777
+                UTP • PROCESOS PARA INGENIERÍA • SECC. 19777 • GRUPO 4
               </span>
             </div>
             <p className="text-xs text-slate-400">
@@ -256,13 +263,26 @@ export default function AtPacPresentation() {
         <div className="flex items-center gap-2">
           <Activity className="w-3.5 h-3.5 text-emerald-500" />
           <span>
-            Expositores: Kenyu Toribio & Smiler Yarlaqué • Docente: Ing. Joany Zeballos
+            Universidad Tecnológica del Perú (UTP) • Grupo 4 • Docente: Ing. Joany Carina Zeballos Riveros • Ciclo 2026
           </span>
         </div>
         <div>
           Atajos: [1] Comercial • [2] Patio • [D] Demo Comercial • [P] Demo Patio U • [M] TO-BE
         </div>
       </footer>
+
+      {/* INTEGRANTES DEL GRUPO */}
+      <section className="flex flex-wrap items-center justify-center gap-2 px-2 pb-1 text-[11px] font-mono">
+        <span className="text-slate-500">Integrantes:</span>
+        {INTEGRANTES.map((p) => (
+          <span
+            key={p.codigo}
+            className="px-2 py-0.5 rounded bg-slate-900 border border-slate-800 text-slate-300"
+          >
+            {p.nombre} <span className="text-emerald-400">{p.codigo}</span>
+          </span>
+        ))}
+      </section>
 
       {/* MODALES DE SIMULACIÓN EN VIVO */}
       <CommercialDemoModal open={demoOpen} onClose={() => setDemoOpen(false)} />

@@ -26,7 +26,7 @@ interface DashProps {
 
 type ExtendedTab = "MAPA" | "PEPSC" | "DOP" | "DAP" | "BPMN" | "PARETO" | "ISHIKAWA" | "KPIS";
 
-// TABLA COMPLETA DAP 1: COMERCIAL (17 ACTIVIDADES - 2,000 MIN)
+// TABLA COMPLETA DAP 1: COMERCIAL (17 ACTIVIDADES - 2,195 MIN)
 const DAP_COMERCIAL = [
   { id: 1, act: "Recepción de solicitud de cotización (correo/llamada)", time: 15, sym: "O" },
   { id: 2, act: "Espera en bandeja comercial hasta asignación", time: 120, sym: "D" },
@@ -42,12 +42,12 @@ const DAP_COMERCIAL = [
   { id: 12, act: "Revisión de precios, márgenes y disponibilidad", time: 15, sym: "I" },
   { id: 13, act: "Generación de propuesta económica (PDF / Excel)", time: 20, sym: "O" },
   { id: 14, act: "Control final de cotización antes de envío", time: 10, sym: "I" },
-  { id: 15, act: "Envío de cotización formal por correo al cliente", time: 10, sym: "T" },
+  { id: 15, act: "Envío de cotización formal por correo al cliente", time: 5, sym: "T" },
   { id: 16, act: "Tiempo de revisión y respuesta del cliente", time: 1440, sym: "D" },
   { id: 17, act: "Archivo y registro de cotización en ERP Discos", time: 5, sym: "A" },
 ];
 
-// TABLA COMPLETA DAP 2: PATIO LURÍN (18 ACTIVIDADES - 261 MIN - 62M)
+// TABLA COMPLETA DAP 2: PATIO LURÍN (18 ACTIVIDADES - 280 MIN - 62M)
 const DAP_PATIO = [
   { id: 1, act: "Recepción y descarga de lotes retornados (999300104)", time: 20, sym: "O" },
   { id: 2, act: "Control visual inicial de estado físico y daños", time: 10, sym: "I" },
@@ -55,16 +55,16 @@ const DAP_PATIO = [
   { id: 4, act: "Espera por cola en hidrolavadoras industriales", time: 35, sym: "D" },
   { id: 5, act: "Lavado a alta presión con agua de cisterna", time: 30, sym: "O" },
   { id: 6, act: "Desincrustado neumático con Atlas Copco RVM 08B", time: 40, sym: "O" },
-  { id: 7, act: "Inspección de calidad de lavado y limpieza superficial", time: 8, sym: "I" },
-  { id: 8, act: "Traslado de piezas pequeñas a Molino Plank (12m)", time: 5, sym: "T" },
+  { id: 7, act: "Inspección de calidad de lavado y limpieza superficial", time: 10, sym: "I" },
+  { id: 8, act: "Traslado de piezas pequeñas a Molino Plank (10m)", time: 4, sym: "T" },
   { id: 9, act: "Limpieza por fricción y granallado en Molino Plank", time: 25, sym: "O" },
-  { id: 10, act: "Prueba de embonado y acople estructural", time: 7, sym: "I" },
-  { id: 11, act: "Traslado de plataformas a taller fenólicos (15m)", time: 6, sym: "T" },
+  { id: 10, act: "Prueba de embonado y acople estructural", time: 5, sym: "I" },
+  { id: 11, act: "Traslado de plataformas a taller fenólicos (12m)", time: 5, sym: "T" },
   { id: 12, act: "Desmontaje y recambio panel fenólico (CP7748)", time: 30, sym: "O" },
-  { id: 13, act: "Inspección de nivelación y fijación de panel", time: 6, sym: "I" },
+  { id: 13, act: "Inspección de nivelación y fijación de panel", time: 5, sym: "I" },
   { id: 14, act: "Enzunchado, empaquetado y apilamiento en Racks Doka", time: 15, sym: "O" },
-  { id: 15, act: "Inspección final de calidad y liberación (VoBo)", time: 8, sym: "I" },
-  { id: 16, act: "Traslado a zona de despacho / almacén Hub 313 (20m)", time: 7, sym: "T" },
+  { id: 15, act: "Inspección final de calidad y liberación (VoBo)", time: 10, sym: "I" },
+  { id: 16, act: "Traslado a zona de despacho / almacén Hub 313 (25m)", time: 10, sym: "T" },
   { id: 17, act: "Doble registro manual de stock en HiVis y ERP Discos", time: 20, sym: "D" },
   { id: 18, act: "Almacenamiento de stock certificado disponible", time: 0, sym: "A" },
 ];
@@ -585,8 +585,8 @@ export default function EngineeringDashboards({ mode, zone }: DashProps) {
             <div className="flex items-center justify-between">
               <h3 className={`${expanded ? "text-lg" : "text-sm"} font-bold text-white`}>
                 {isComercial
-                  ? "DAP 01: Subproceso Comercial (17 Act. • 2,000 min)"
-                  : "DAP 02: Reacondicionamiento Patio Lurín (18 Act. • 261 min • 62 m)"}
+                  ? "DAP 01: Subproceso Comercial (17 Act. • 2,195 min)"
+                  : "DAP 02: Reacondicionamiento Patio Lurín (18 Act. • 280 min • 62 m)"}
               </h3>
               <span className="text-[11px] font-mono text-rose-400">
                 {isToBe ? "DEMORAS ELIMINADAS (TO-BE)" : isComercial ? "4 DEMORAS = 1,980 MIN" : "2 DEMORAS = 55 MIN"}
@@ -1259,7 +1259,7 @@ export default function EngineeringDashboards({ mode, zone }: DashProps) {
                 {
                   kpi: "3. Tiempo de reacondicionamiento",
                   formula: "Hora finalización − Hora inicio del proceso en Yard",
-                  asIs: "261 min / lote",
+                  asIs: "280 min / lote",
                   toBe: "185 min / lote",
                 },
                 {
