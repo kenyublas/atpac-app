@@ -12,7 +12,7 @@ import {
   Bot,
   Truck,
 } from "lucide-react";
-import IsometricDiorama from "@/components/IsometricDiorama";
+import IsometricDiorama from "@/components/IsometricDioramaVida";
 import EngineeringDashboards from "@/components/EngineeringDashboards";
 import CommercialDemoModal from "@/components/CommercialDemoModal";
 import PatioDemoModal from "@/components/PatioDemoModal";
